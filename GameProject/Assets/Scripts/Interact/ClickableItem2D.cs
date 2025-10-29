@@ -25,7 +25,9 @@ public class ClickableItem2D : MonoBehaviour
     [Tooltip("若为 true：等角色到达本物体位置后再触发 onArrived；否则立刻触发 onClicked")]
     public bool triggerAfterArrive = false;   // 等角色到了再触发
     public UnityEvent onClicked;              // 立即触发（若不等到达）
-    public UnityEvent onArrived;              // 到达后触发
+    public UnityEvent onArrived;              // 到达后触发]
+
+    public GameObject Obj;
 
     [Header("动画 + 切场景（仅当本物体是场景最后一个时才执行）")]
     public bool playAnimBeforeTransition = true;  // 切场景前先播动画
@@ -123,59 +125,14 @@ public class ClickableItem2D : MonoBehaviour
         else onClicked?.Invoke();
 
         if (!_isFinal) return;
-
-        // 先播动画
-        if (playAnimBeforeTransition && targetAnimator)
-        {
-            if (!string.IsNullOrEmpty(animTrigger))
-                targetAnimator.SetTrigger(animTrigger);
-
-            bool waited = false;
-
-            // 等待指定状态播放完一轮
-            if (!string.IsNullOrEmpty(waitStateName))
-            {
-                // 等待切到目标状态
-                float t = 0f, maxWait = 3f;
-                while (t < maxWait)
-                {
-                    var s = targetAnimator.GetCurrentAnimatorStateInfo(0);
-                    if (s.IsName(waitStateName)) break;
-                    t += Time.deltaTime;
-                    await System.Threading.Tasks.Task.Yield();
-                }
-                // 再等一帧
-                var s2 = targetAnimator.GetCurrentAnimatorStateInfo(0);
-                float len = s2.length > 0.01f ? s2.length : fallbackDelay;
-                float e = 0f;
-                while (e < len)
-                {
-                    e += Time.deltaTime;
-                    await System.Threading.Tasks.Task.Yield();
-                }
-                waited = true;
-            }
-
-            // 兜底延时
-            if (!waited && fallbackDelay > 0f)
-            {
-                float e = 0f;
-                while (e < fallbackDelay)
-                {
-                    e += Time.deltaTime;
-                    await System.Threading.Tasks.Task.Yield();
-                }
-            }
-        }
-
-        // 切场景（淡入淡出）
-        if (!string.IsNullOrEmpty(nextSceneName))
-        {
-            if (useFade && SceneFader.Instance)
-                SceneFader.Instance.FadeToScene(nextSceneName);
-            else
-                SceneManager.LoadScene(nextSceneName);
-        }
+        // // 切场景（淡入淡出）
+        // if (!string.IsNullOrEmpty(nextSceneName))
+        // {
+        //     if (useFade && SceneFader.Instance)
+        //         SceneFader.Instance.FadeToScene(nextSceneName);
+        //     else
+        //         SceneManager.LoadScene(nextSceneName);
+        // }
     }
 
     // 点击后锁死
