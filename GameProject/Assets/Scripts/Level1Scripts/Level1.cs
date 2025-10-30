@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class Level1 : MonoBehaviour
 {
-    private bool isPlayingTimeLine = false;
+    public bool isPlayingTimeLine = false;
     public PlayableDirector director;
     public PlayerController player;
 
@@ -31,6 +31,7 @@ public class Level1 : MonoBehaviour
 
     private void Update()
     {
+
     }
 
     public void OnTimeLineStart()
@@ -43,7 +44,7 @@ public class Level1 : MonoBehaviour
         isPlayingTimeLine = true;
     }
 
-    void OnTimelineEnd()
+    public void OnTimelineEnd()
     {
         // 2. ½ûÓÃ PlayableDirector
         if (director != null)
@@ -56,5 +57,4 @@ public class Level1 : MonoBehaviour
         }
         isPlayingTimeLine = false;
     }
-
 }

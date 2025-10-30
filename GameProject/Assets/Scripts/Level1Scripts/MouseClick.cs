@@ -13,14 +13,15 @@ public class MouseClick : MonoBehaviour
         {
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, 100, 1 << 6);
             Debug.Log(hit.collider.gameObject.name);
-            /*
-            if (hit.collider.gameObject.name == "Cat" && !Level1.Instance.isPlayingTimeLine)
+            
+            if (hit.collider.gameObject.name == "Cat" && !(Level1.Instance.isPlayingTimeLine))
             {
                 StartCoroutine(OnCatClick());
             }
-            */
+            
         }
     }
+
     IEnumerator OnCatClick()
     {
         Debug.Log("OnCatClick");
@@ -43,5 +44,4 @@ public class MouseClick : MonoBehaviour
             Debug.LogError("Í¼Æ¬¼ÓÔØ´íÎó");
         }
     }
-
 }
