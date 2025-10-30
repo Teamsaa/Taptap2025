@@ -10,12 +10,13 @@ using DG.Tweening;
 public class MainUIController : MonoBehaviour
 {
     [SerializeField] private Button startButton;
-    [SerializeField] private Button endGame;
+    [SerializeField] private Button endButton;
     [SerializeField] private SceneLoader sceneLoader;
 
     private void Start()
     {
         startButton.onClick.AddListener(StartGame);
+        endButton.onClick.AddListener(EndGame);   
         sceneLoader.FadeOut();
     }
 
@@ -24,6 +25,11 @@ public class MainUIController : MonoBehaviour
     {
         StartCoroutine(LoadScene());
         
+    }
+
+    private void EndGame()
+    {
+        Application.Quit();
     }
 
     IEnumerator LoadScene()

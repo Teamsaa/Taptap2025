@@ -604,7 +604,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startButton: {fileID: 604307141}
-  endGame: {fileID: 1773781362}
+  endButton: {fileID: 1773781362}
   sceneLoader: {fileID: 1684034271}
 --- !u!1 &1684034270
 GameObject:
