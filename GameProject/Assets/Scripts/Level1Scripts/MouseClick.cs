@@ -11,8 +11,10 @@ public class MouseClick : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
+
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, 100, 1 << 6);
             Debug.Log(hit.collider.gameObject.name);
+            Debug.Log("ceshi:" + Level1.Instance.isPlayingTimeLine);
             
             if (hit.collider.gameObject.name == "Cat" && !(Level1.Instance.isPlayingTimeLine))
             {
@@ -20,7 +22,7 @@ public class MouseClick : MonoBehaviour
             }
             else if (hit.collider.gameObject.name == "Chair" && !(Level1.Instance.isPlayingTimeLine))
             {
-                
+                StartCoroutine(OnChairClick());
             }
             
         }
@@ -34,6 +36,13 @@ public class MouseClick : MonoBehaviour
         yield return new WaitForSeconds(3);
         UpdateImage("images/Cat/Cat1", cat);
     }
+
+    IEnumerator OnChairClick()
+    {
+        yield return new WaitForSeconds(3);
+        Level1.Instance.OnTimeLine2Start();
+    }
+
     void UpdateImage(string imagePath, SpriteRenderer sr)
     {
         Sprite sprite2 = Resources.Load<Sprite>(imagePath);

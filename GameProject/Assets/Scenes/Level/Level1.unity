@@ -1516,6 +1516,61 @@ Transform:
   - {fileID: 184701154}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1390748869
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1390748871}
+  - component: {fileID: 1390748870}
+  m_Layer: 0
+  m_Name: TimeLine2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!320 &1390748870
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1390748869}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 11400000, guid: 0ac5e0bbc2f643a4f9337d6c65682d84, type: 2}
+  m_InitialState: 0
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings:
+  - key: {fileID: -1484222906681081140, guid: 0ac5e0bbc2f643a4f9337d6c65682d84, type: 2}
+    value: {fileID: 1085866963}
+  - key: {fileID: -1209567409264167025, guid: 0ac5e0bbc2f643a4f9337d6c65682d84, type: 2}
+    value: {fileID: 1085866963}
+  - key: {fileID: 7899877152130591645, guid: 0ac5e0bbc2f643a4f9337d6c65682d84, type: 2}
+    value: {fileID: 1779376151}
+  m_ExposedReferences:
+    m_References: []
+--- !u!4 &1390748871
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1390748869}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.846889, y: 0.8879832, z: 0.023193238}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1779376148
 GameObject:
   m_ObjectHideFlags: 0
@@ -1549,6 +1604,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayingTimeLine: 0
   director: {fileID: 869173166}
+  director2: {fileID: 1390748870}
   player: {fileID: 1085866965}
 --- !u!4 &1779376150
 Transform:
@@ -1580,12 +1636,27 @@ MonoBehaviour:
   m_Events:
     m_Signals:
     - {fileID: 11400000, guid: 2fe3384ba5f30f744b0e688c613de49f, type: 2}
+    - {fileID: 11400000, guid: 254d28fa83299874cb2c78567706b5c2, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 1779376149}
           m_TargetAssemblyTypeName: Level1, Assembly-CSharp
           m_MethodName: OnTimelineEnd
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1779376149}
+          m_TargetAssemblyTypeName: Level1, Assembly-CSharp
+          m_MethodName: OnTimeline2End
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -1688,6 +1759,7 @@ SceneRoots:
   - {fileID: 877058598}
   - {fileID: 234133503}
   - {fileID: 869173167}
+  - {fileID: 1390748871}
   - {fileID: 215628843}
   - {fileID: 1779376150}
   - {fileID: 2035111165}

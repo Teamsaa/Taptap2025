@@ -8,6 +8,7 @@ public class Level1 : MonoBehaviour
 {
     public bool isPlayingTimeLine = true;
     public PlayableDirector director;
+    public PlayableDirector director2;
     public PlayerController player;
 
 
@@ -26,7 +27,7 @@ public class Level1 : MonoBehaviour
 
     void Start()
     {
-        director.Play();
+        OnTimeLineStart();
     }
 
     private void Update()
@@ -36,12 +37,14 @@ public class Level1 : MonoBehaviour
 
     public void OnTimeLineStart()
     {
+        director.Play();
         // 禁用玩家控制
         if (player != null)
         {
             player.enabled = false;
         }
         isPlayingTimeLine = true;
+        Debug.Log("TimeLineStart:" + isPlayingTimeLine);
     }
 
     public void OnTimelineEnd()
@@ -56,5 +59,35 @@ public class Level1 : MonoBehaviour
             player.enabled = true;
         }
         isPlayingTimeLine = false;
+        Debug.Log("TimeLineEnd:" + isPlayingTimeLine);
+    }
+
+    public void OnTimeLine2Start()
+    {
+        director2.Play();
+        Debug.Log("test2");
+        // 禁用玩家控制
+        if (player != null)
+        {
+            player.enabled = false;
+        }
+        isPlayingTimeLine = true;
+        Debug.Log("TimeLine2Start:" + isPlayingTimeLine);
+    }
+
+    public void OnTimeline2End()
+    {
+        if (director2 != null)
+        {
+            director2.gameObject.SetActive(false);
+        }
+        if (player != null)
+        {
+            player.enabled = true;
+        }
+        isPlayingTimeLine = false;
+        Debug.Log("TimeLine2End:" + isPlayingTimeLine);
+
+        SceneFader.Instance.FadeToScene("Level2");
     }
 }
